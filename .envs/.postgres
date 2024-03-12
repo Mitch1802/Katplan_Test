@@ -1,6 +1,0 @@
-POSTGRES_HOST=postgres
-POSTGRES_PORT=5432
-POSTGRES_DB=katplan-live
-POSTGRES_USER=sh17vFE9ttPIuk1
-POSTGRES_PASSWORD=17YuSn06Cx4rmYjciJbNbCEmztuWiZ
-DATABASE_URL=postgres://sh17vFE9ttPIuk1:17YuSn06Cx4rmYjciJbNbCEmztuWiZ@postgres:5432/katplan-live
