@@ -10,7 +10,6 @@ class DokumentSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         all_entries = Dokument.objects.all()
         kuerzel_new = ""
-        
         list_of_kuerzel = [sub.kuerzel[1:] for sub in all_entries]
 
         for i in range(1, 1000):
@@ -22,15 +21,8 @@ class DokumentSerializer(serializers.ModelSerializer):
             if not test in list_of_kuerzel:
                 kuerzel_new = test
                 break
-            
-        logger.error(
-            f"Kürzel Neu: D{kuerzel_new}"
-        )
 
         validated_data["kuerzel"] = f"D{kuerzel_new}"
-        logger.error(
-            "Kürzel Neu2: " + validated_data["kuerzel"]
-        )
         instance = Dokument.objects.create(**validated_data)
         return instance
 
