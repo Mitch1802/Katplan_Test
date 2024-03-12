@@ -8,15 +8,10 @@ logger = logging.getLogger(__name__)
 
 class DokumentSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
-        kuerzel_old = validated_data.pop('kuerzel')
         all_entries = Dokument.objects.all()
         kuerzel_new = ""
         
         list_of_kuerzel = [sub.kuerzel[1:] for sub in all_entries]
-
-        logger.error(
-            f"Alle Einträge: {list_of_kuerzel}"
-        )
 
         for i in range(1, 1000):
             test = ""
@@ -27,15 +22,17 @@ class DokumentSerializer(serializers.ModelSerializer):
             if not test in list_of_kuerzel:
                 kuerzel_new = test
                 break
+            
         logger.error(
             f"Kürzel Neu: D{kuerzel_new}"
         )
+
         validated_data["kuerzel"] = "D" + kuerzel_new
         instance = Dokument.objects.create(**validated_data)
         return instance
 
     def update(self, instance, validated_data):
-        # instance.kuerzel = validated_data.get("kuerzel", instance.kuerzel)
+        instance.kuerzel = validated_data.get("kuerzel", instance.kuerzel)
         instance.name = validated_data.get("name", instance.name)
         instance.file = validated_data.get("file", instance.file)
         instance.updated_at = validated_data.get("updated_at", instance.updated_at)
