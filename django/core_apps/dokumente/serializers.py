@@ -27,12 +27,14 @@ class DokumentSerializer(serializers.ModelSerializer):
             f"Kürzel Neu: D{kuerzel_new}"
         )
 
-        validated_data["kuerzel"] = "D" + kuerzel_new
+        validated_data["kuerzel"] = f"D{kuerzel_new}"
+        logger.error(
+            "Kürzel Neu2: " + validated_data["kuerzel"]
+        )
         instance = Dokument.objects.create(**validated_data)
         return instance
 
     def update(self, instance, validated_data):
-        instance.kuerzel = validated_data.get("kuerzel", instance.kuerzel)
         instance.name = validated_data.get("name", instance.name)
         instance.file = validated_data.get("file", instance.file)
         instance.updated_at = validated_data.get("updated_at", instance.updated_at)
