@@ -42,7 +42,7 @@ class KatastropheSerializer(serializers.ModelSerializer):
             KatMassnahmen.objects.create(kat_id=instance, mas_id=mas)
         
         for gef in gefahren_data:
-            KatGefahren.objects.create(kat_id=instance, gef_is=gef)
+            KatGefahren.objects.create(kat_id=instance, gef_id=gef)
         
         return instance
 
