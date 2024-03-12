@@ -3,7 +3,7 @@
 set -e
 echo "Katplan Update startet!"
 
-PROJECT_GIT_URL='https://Mitch1802/Katplan_prod_2432.git'
+PROJECT_GIT_URL='https://github.com/Mitch1802/katplan_test.git'
 
 PROJECT_BASE_PATH='/app/Katplan_prod_2432'
 
