@@ -16,6 +16,21 @@ class GefahrSerializer(serializers.ModelSerializer):
         rollen_data = validated_data.pop('rollen')
         massnahmen_data = validated_data.pop('massnahmen')
         dokumente_data = validated_data.pop('dokumente')
+        all_entries = Gefahr.objects.all()
+        kuerzel_new = ""
+        list_of_kuerzel = [sub.kuerzel[1:] for sub in all_entries]
+
+        for i in range(1, 1000):
+            test = ""
+            if i < 10: test = "00" + str(i)
+            elif i < 100: test = "0" + str(i)
+            else: test = str(i)
+
+            if not test in list_of_kuerzel:
+                kuerzel_new = test
+                break
+
+        validated_data["kuerzel"] = f"G{kuerzel_new}"
 
         instance = Gefahr.objects.create(**validated_data)
 
@@ -35,7 +50,6 @@ class GefahrSerializer(serializers.ModelSerializer):
         massnahmen_data = validated_data.pop('massnahmen')
         dokumente_data = validated_data.pop('dokumente')
 
-        instance.kuerzel = validated_data.get("kuerzel", instance.kuerzel)
         instance.name = validated_data.get("name", instance.name)
         instance.beschreibung = validated_data.get( "beschreibung", instance.beschreibung)
         instance.ausloeser = validated_data.get("ausloeser", instance.ausloeser)

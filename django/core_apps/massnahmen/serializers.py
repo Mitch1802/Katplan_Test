@@ -13,6 +13,22 @@ class MassnahmeSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         verstaendigung_data = validated_data.pop('verstaendigung')
         fahrzeuge_data = validated_data.pop('fahrzeuge')
+        all_entries = Massnahme.objects.all()
+        kuerzel_new = ""
+        list_of_kuerzel = [sub.kuerzel[1:] for sub in all_entries]
+
+        for i in range(1, 1000):
+            test = ""
+            if i < 10: test = "00" + str(i)
+            elif i < 100: test = "0" + str(i)
+            else: test = str(i)
+
+            if not test in list_of_kuerzel:
+                kuerzel_new = test
+                break
+
+        validated_data["kuerzel"] = f"M{kuerzel_new}"
+
 
         instance = Massnahme.objects.create(**validated_data)
 
@@ -28,7 +44,6 @@ class MassnahmeSerializer(serializers.ModelSerializer):
         verstaendigung_data = validated_data.pop('verstaendigung')
         fahrzeuge_data = validated_data.pop('fahrzeuge')
 
-        instance.kuerzel = validated_data.get("kuerzel", instance.kuerzel)
         instance.name = validated_data.get("name", instance.name)
         instance.beschreibung = validated_data.get("beschreibung", instance.beschreibung)
         instance.kategorie = validated_data.get("kategorie", instance.kategorie)
