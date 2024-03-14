@@ -46,10 +46,10 @@ services:
         restart: always
         volumes:
             - static_volume:/app/staticfiles
-            - media_volume:/app/mediafiles
-            - backup_volume:/app/backups
-        ports:
-            - '5000:80'
+        # ports:
+        #     - '5000:80'
+        expose:
+            - "5000"
         depends_on:
             - api
         networks:
