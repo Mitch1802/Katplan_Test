@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 set -e
-echo "Katplan Update startet!"
+echo "Katplan Installation startet!"
 
 PROJECT_GIT_URL='https://github.com/Mitch1802/Katplan_Test.git'
 PROJECT_BASE_PATH='/srv/katplan/katplan_2432'
@@ -23,4 +23,4 @@ docker compose exec api python manage.py loaddata /app/backups/initial.json
 
 rm -R $PROJECT_BASE_PATH
 
-echo "Katplan Update erfolgreich durchgeführt!"
+echo "Katplan Installation erfolgreich durchgeführt!"
