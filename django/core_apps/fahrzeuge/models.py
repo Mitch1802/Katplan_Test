@@ -25,7 +25,7 @@ class Fahrzeug(TimeStampedModel):
     # foto = models.ImageField(
     #     verbose_name=_("Foto"), upload_to=file_name_change, default="/fahrzeuge/default.png"
     # )
-    foto = Base64ImageField(verbose_name=_("Foto"))
+    foto = Base64ImageField()
     fahrzeug = models.BooleanField(verbose_name=_("Fahrzeug"), default=False)
     anhaenger = models.BooleanField(verbose_name=_("Anhänger"), default=False)
     type = models.CharField(verbose_name=_("Type"), max_length=255, blank=True)
