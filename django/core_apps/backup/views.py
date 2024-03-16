@@ -26,7 +26,7 @@ class BackupGetPostView(APIView):
         voller_pfad = pfad + backup_filename
        
         with open(voller_pfad, "w") as f:
-            call_command("dumpdata", exclude=["contenttypes", "auth", "allauth", "sessions"], stdout=f)
+            call_command("dumpdata", exclude=["contenttypes", "auth", "allauth", "sessions"], stdout=f,)
         
         msg = f"Backup {backup_filename} wurde erfolgreich erstellt!"
         backups = os.listdir(pfad)  
@@ -45,7 +45,7 @@ class RestorePostView(APIView):
         backups = os.listdir(pfad)
         if backupname in backups:
             datei = pfad + backupname
-            call_command("loaddata", datei)
+            call_command("loaddata", datei, "--delete")
             name = backupname.split(".")
             name = name[0]
             
