@@ -16,9 +16,6 @@ mkdir -p $PROJECT_BASE_PATH
 git clone $PROJECT_GIT_URL $PROJECT_BASE_PATH
 
 cd $PROJECT_BASE_PATH
-docker network create -d bridge $DOCKER_NETWORK_NAME
-docker compose up --build -d --remove-orphans
-wait
 docker compose exec api python manage.py loaddata /app/backups/initial.json
 
 rm -R $PROJECT_BASE_PATH
