@@ -27,7 +27,7 @@ class Dokument(TimeStampedModel):
     #     upload_to=file_name_change,
     #     default="/dokumente/default.pdf",
     # )
-    file = Base64FileField(verbose_name=_("Datei"))
+    file = Base64FileField()
 
     def __str__(self):
         return f"{self.name}"
