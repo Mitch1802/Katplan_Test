@@ -33,7 +33,7 @@ THIRD_PARTY_APPS = [
     "allauth.socialaccount",
     "dj_rest_auth",
     "dj_rest_auth.registration",
-    "drf-extra-fields"
+    "drf-extra-fields",
 ]
 
 LOCAL_APPS = [
@@ -132,8 +132,6 @@ USE_TZ = True
 
 SITE_ID = 1
 
-ADMIN_URL = "supersecret/"
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
@@ -160,9 +158,6 @@ REST_FRAMEWORK = {
     ],
     "DEFAULT_PERMISSION_CLASSES": [
         "rest_framework.permissions.IsAuthenticated",
-    ],
-    "DEFAULT_FILTER_BACKENDS": [
-        "django_filters.rest_framework.DjangoFilterBackend",
     ],
 }
 

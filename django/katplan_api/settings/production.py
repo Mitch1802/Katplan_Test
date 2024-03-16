@@ -9,7 +9,7 @@ SECRET_KEY = env("DJANGO_SECRET_KEY")
 
 ALLOWED_HOSTS = env("DJANGO_ALLOWED_HOSTS").split(",")
 
-ADMIN_URL = "undefined"
+ADMIN_URL = "undefined/"
 
 DATABASES = {"default": env.db("DATABASE_URL")}
 
