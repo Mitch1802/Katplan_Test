@@ -4,8 +4,8 @@ set -e
 echo "Katplan Update startet!"
 
 PROJECT_GIT_URL='https://github.com/Mitch1802/Katplan_Test.git'
-PROJECT_BASE_PATH='/app/katplan_2432'
-DOCKER_NETWORK_NAME='katplan_2432_nw'
+
+PROJECT_BASE_PATH='/srv/katplan/katplan_2432'
 
 if [ -d $PROJECT_BASE_PATH ]
 then
@@ -16,7 +16,7 @@ mkdir -p $PROJECT_BASE_PATH
 git clone $PROJECT_GIT_URL $PROJECT_BASE_PATH
 
 cd $PROJECT_BASE_PATH
-docker compose exec api python manage.py loaddata /app/backups/initial.json
+docker compose exec api python manage.py loaddata /app/backups/initial.json --delete
 
 rm -R $PROJECT_BASE_PATH
 
