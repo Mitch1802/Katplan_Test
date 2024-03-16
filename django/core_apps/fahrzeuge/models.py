@@ -2,7 +2,6 @@ import os
 from django.db import models
 from django.core.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
-from drf_extra_fields.fields import Base64ImageField
 
 from core_apps.common.models import TimeStampedModel
 
@@ -22,10 +21,9 @@ class Fahrzeug(TimeStampedModel):
     
     kuerzel = models.CharField(verbose_name=_("Kürzel"), max_length=5, unique=True)
     name = models.CharField(verbose_name=_("Name"), max_length=255)
-    # foto = models.ImageField(
-    #     verbose_name=_("Foto"), upload_to=file_name_change, default="/fahrzeuge/default.png"
-    # )
-    foto = Base64ImageField()
+    foto = models.ImageField(
+        verbose_name=_("Foto"), upload_to=file_name_change, default="/fahrzeuge/default.png"
+    )
     fahrzeug = models.BooleanField(verbose_name=_("Fahrzeug"), default=False)
     anhaenger = models.BooleanField(verbose_name=_("Anhänger"), default=False)
     type = models.CharField(verbose_name=_("Type"), max_length=255, blank=True)

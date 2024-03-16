@@ -7,13 +7,14 @@ services:
             dockerfile: ./docker/django/Dockerfile
         command: /start
         restart: always
-        image: mitch122/katplan-2432:api-1.0
+        image: mitch122/katplan:2432-api-1.0
         container_name: katplan_2432_api
         expose:
             - "9999"
         volumes:
-            - static_volume:/app/staticfiles
-            - backup_volume:/app/backups
+            - ./app/staticfiles:/app/staticfiles:ro
+            - ./app/mediafiles:/app/mediafiles:ro
+            - ./app/backups:/app/backups:ro
         env_file:
             - ./.envs/.django
             - ./.envs/.postgres
@@ -26,11 +27,11 @@ services:
         build:
             context: .
             dockerfile: ./docker/postgres/Dockerfile
-        image: mitch122/katplan-2432:db-1.0
+        image: mitch122/katplan:2432-db-1.0
         container_name: katplan_2432_db
         restart: always
         volumes:
-            - postgres_data_volume:/var/lib/postgresql/data
+            - ./app/postgres:/var/lib/postgresql/data
         env_file:
             - ./.envs/.postgres
         networks:
@@ -40,12 +41,12 @@ services:
         build:
             context: .
             dockerfile: ./docker/nginx/Dockerfile
-        image: mitch122/katplan-2432:nginx-1.0
+        image: mitch122/katplan:2432-nginx-1.0
         container_name: katplan_2432_nginx
         restart: always
         volumes:
-            - static_volume:/app/staticfiles
-            - backup_volume:/app/backups
+            - ./app/staticfiles:/app/staticfiles:ro
+            - ./app/mediafiles:/app/mediafiles:ro
         ports:
             - '5000:80'
         depends_on:
@@ -56,11 +57,3 @@ services:
 networks:
     katplan_2432_nw:
         external: true
-
-volumes:
-    static_volume: 
-          name: "katplan_2432_static"
-    backup_volume: 
-          name: "katplan_2432_backup"
-    postgres_data_volume: 
-          name: "katplan_2432_postgres"
