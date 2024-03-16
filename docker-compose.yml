@@ -12,9 +12,9 @@ services:
         expose:
             - "9999"
         volumes:
-            - ./app/staticfiles:/app/staticfiles
-            - ./app/mediafiles:/app/mediafiles
-            - ./app/backups:/app/backups
+            - ./srv/staticfiles:/app/staticfiles
+            - ./srv/mediafiles:/app/mediafiles
+            - ./srv/backups:/app/backups
         env_file:
             - ./.envs/.django
             - ./.envs/.postgres
@@ -31,7 +31,7 @@ services:
         container_name: katplan_2432_db
         restart: always
         volumes:
-            - ./app/postgres:/var/lib/postgresql/data
+            - ./srv/postgres:/var/lib/postgresql/data
         env_file:
             - ./.envs/.postgres
         networks:
@@ -45,8 +45,8 @@ services:
         container_name: katplan_2432_nginx
         restart: always
         volumes:
-            - ./app/staticfiles:/app/staticfiles
-            - ./app/mediafiles:/app/mediafiles
+            - ./srv/staticfiles:/app/staticfiles
+            - ./srv/mediafiles:/app/mediafiles
         ports:
             - '5000:80'
         depends_on:
