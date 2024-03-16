@@ -19,7 +19,7 @@ RUN pip wheel --wheel-dir /usr/src/app/wheels \
 FROM python as python-run-stage
 ARG BUILD_ENVIRONMENT=production
 
-ARG APP_HOME=/app
+ARG APP_HOME=/srv/katplan
 
 ENV PYTHONDONTWRITEBYTECODE 1
 
