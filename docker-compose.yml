@@ -46,7 +46,7 @@ services:
         volumes:
             - media_volume:/app/mediafiles
         ports:
-            - '5000:80'
+            - '8001:80'
         depends_on:
             - api
         networks:
