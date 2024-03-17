@@ -1,15 +1,16 @@
 from .base import *  
 from .base import env
 
-ADMINS = [("Michael Reichenauer", "office@michael-web.at")]
+ADMINS = [("Ing. Michael Reichenauer", "office@michael-web.at")]
 
-CSRF_TRUSTED_ORIGIS = env("DJANGO_CSRF_TRUSTED_ORIGINS").split(",")
+# CSRF_TRUSTED_ORIGIS = env("DJANGO_CSRF_TRUSTED_ORIGINS").split(",")
 
 SECRET_KEY = env("DJANGO_SECRET_KEY")
 
-ALLOWED_HOSTS = env("DJANGO_ALLOWED_HOSTS").split(",")
+# ALLOWED_HOSTS = env("DJANGO_ALLOWED_HOSTS").split(",")
+ALLOWED_HOSTS = ["*"]
 
-ADMIN_URL = "undefined/"
+ADMIN_URL = "notused/"
 
 DATABASES = {"default": env.db("DATABASE_URL")}
 

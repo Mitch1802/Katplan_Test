@@ -14,8 +14,6 @@ services:
         volumes:
             - media_volume:/app/mediafiles
             - backup_volume:/app/backups
-            # - /srv/katplan/mediafiles:/app/mediafiles:z
-            # - /srv/katplan/backups:/app/backups:z
         env_file:
             - ./.envs/.django
             - ./.envs/.postgres
@@ -33,7 +31,6 @@ services:
         restart: always
         volumes:
             - postgres_data_volume:/var/lib/postgresql/data
-            # - /srv/katplan/postgres:/var/lib/postgresql/data:z
         env_file:
             - ./.envs/.postgres
         networks:
@@ -48,7 +45,6 @@ services:
         restart: always
         volumes:
             - media_volume:/app/mediafiles
-            # - /srv/katplan/mediafiles:/app/mediafiles:z
         ports:
             - '5000:80'
         depends_on:

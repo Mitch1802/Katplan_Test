@@ -45,7 +45,7 @@ class RestorePostView(APIView):
         backups = os.listdir(pfad)
         if backupname in backups:
             datei = pfad + backupname
-            call_command("loaddata", datei, "delete")
+            call_command("loaddata", datei)
             name = backupname.split(".")
             name = name[0]
             
