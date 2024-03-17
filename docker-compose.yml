@@ -53,7 +53,7 @@ services:
             - katplan_nw
 
 networks:
-    katplan_2432_nw:
+    katplan_nw:
         external: true
 
 volumes:
