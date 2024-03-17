@@ -2,4 +2,5 @@ DJANGO_SETTINGS_MODULE=katplan_api.settings.production
 DJANGO_SECRET_KEY=z3gep!fd(58jbnqn)659l$i0kbgi7@xdvt#^v1196l1*50r227
 DJANGO_ALLOWED_HOSTS=schwadorf.katplan.app
 DJANGO_CSRF_TRUSTED_ORIGINS=https://schwadorf.katplan.app
+DJANGO_CORS_ALLOWED_ORIGINS=https://schwadorf.katplan.app,http://localhost:4200
 SIGNING_KEY=csb=4=76i(@@ez6d7d0$13k%3e4)p%&^nlds!57&&qjgajp9lt
