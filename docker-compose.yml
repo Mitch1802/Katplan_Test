@@ -7,7 +7,7 @@ services:
             dockerfile: ./docker/django/Dockerfile
         command: /start
         restart: always
-        image: mitch122/katplan:2432-api-1.0
+        image: mitch122/katplan:2432-api-2.0.0
         container_name: katplan_2432_api
         expose:
             - "9999"
@@ -26,7 +26,7 @@ services:
         build:
             context: .
             dockerfile: ./docker/postgres/Dockerfile
-        image: mitch122/katplan:2432-db-1.0
+        image: mitch122/katplan:2432-db-2.0.0
         container_name: katplan_2432_db
         restart: always
         volumes:
@@ -40,7 +40,7 @@ services:
         build:
             context: .
             dockerfile: ./docker/nginx/Dockerfile
-        image: mitch122/katplan:2432-nginx-1.0
+        image: mitch122/katplan:2432-nginx-2.0.0
         container_name: katplan_2432_nginx
         restart: always
         volumes:
