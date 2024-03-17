@@ -4,8 +4,8 @@ set -e
 echo "Katplan Installation startet!"
 
 PROJECT_GIT_URL='https://github.com/Mitch1802/Katplan_Test.git'
-PROJECT_BASE_PATH='/srv/katplan/katplan_2432'
-DOCKER_NETWORK_NAME='katplan_2432_nw'
+PROJECT_BASE_PATH='/srv/katplan/'
+DOCKER_NETWORK_NAME='katplan_nw'
 
 if [ -d $PROJECT_BASE_PATH ]
 then

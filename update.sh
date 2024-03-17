@@ -5,7 +5,7 @@ echo "Katplan Update startet!"
 
 PROJECT_GIT_URL='https://github.com/Mitch1802/Katplan_Test.git'
 
-PROJECT_BASE_PATH='/srv/katplan/katplan_2432'
+PROJECT_BASE_PATH='/srv/katplan'
 
 if [ -d $PROJECT_BASE_PATH ]
 then
